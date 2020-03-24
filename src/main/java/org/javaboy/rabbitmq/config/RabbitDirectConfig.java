@@ -17,13 +17,16 @@ public class RabbitDirectConfig {
     public final static String DIRECTNAME = "javaboy-direct";
 
     /**
-     * 队列
+     * 队列---->以hello.javaboy命名
      */
     @Bean
     Queue queue(){
         return new Queue("hello.javaboy");
     }
 
+    /**
+     * Direct交换机  根据路由建进行处理---->即仅处理hello.javaboy队列中的消息
+     */
     @Bean
     DirectExchange directExchange(){
         //重启后依然有效，长期未使用不要删除

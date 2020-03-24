@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 public class DirectReceiver {
 
     /**
-     * 消费处理---->监听routingKey以hello.javaboy为名称的消费者发送的消息并进行处理
+     * 消费处理---->监听routingKey以hello.javaboy为名称的生产者（即对应队列）发送的消息并进行处理
      *
      * @param msg 待消费的字符串消息
      */

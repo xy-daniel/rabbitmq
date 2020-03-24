@@ -12,7 +12,7 @@ class RabbitmqApplicationTests {
     RabbitTemplate rabbitTemplate;
 
     /**
-     * directExchange接收到这个消息的时候会转发到routingKey以hello.javaboy为名称的队列消费者处理程序上去
+     * direct交换机接收到这个消息的时候会转发到hello.javaboy为名称的队列消费者处理程序上去
      */
     @Test
     void product1() {
