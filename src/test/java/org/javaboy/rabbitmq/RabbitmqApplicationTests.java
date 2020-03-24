@@ -1,6 +1,9 @@
 package org.javaboy.rabbitmq;
 
+import org.javaboy.rabbitmq.config.RabbitHeaderConfig;
 import org.junit.jupiter.api.Test;
+import org.springframework.amqp.core.Message;
+import org.springframework.amqp.core.MessageBuilder;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -37,5 +40,15 @@ class RabbitmqApplicationTests {
         rabbitTemplate.convertAndSend("javaboy-topic", "xiaomi.phone", "小米phone");
         rabbitTemplate.convertAndSend("javaboy-topic", "huawei.phone", "华为phone");
         rabbitTemplate.convertAndSend("javaboy-topic", "vivo.news", "vivo新闻");
+    }
+
+    @Test
+    void header(){
+        Message nameMessage = MessageBuilder.withBody("hello javaboy".getBytes()).setHeader("name", "javaboy").build();
+        Message errorMessage = MessageBuilder.withBody("hello javaboy".getBytes()).setHeader("name", "ddg").build();
+        Message ageMessage = MessageBuilder.withBody("hello 99".getBytes()).setHeader("age", "99").build();
+        rabbitTemplate.send(RabbitHeaderConfig.HEADERNAME, null, nameMessage);
+        rabbitTemplate.send(RabbitHeaderConfig.HEADERNAME, null, errorMessage);
+        rabbitTemplate.send(RabbitHeaderConfig.HEADERNAME, null, ageMessage);
     }
 }
