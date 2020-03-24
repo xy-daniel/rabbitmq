@@ -8,6 +8,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
+ * RabbitDirectConfig
+ *
  * @author daniel
  * @version 1.0.0
  * @date 2020/3/23 22:37
@@ -25,7 +27,7 @@ public class RabbitDirectConfig {
     }
 
     /**
-     * Direct交换机  根据路由建进行处理---->即仅处理hello.javaboy队列中的消息
+     * Direct交换机  根据路由键进行处理---->即仅处理hello.javaboy队列中的消息
      */
     @Bean
     DirectExchange directExchange(){
