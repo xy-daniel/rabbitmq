@@ -26,4 +26,16 @@ class RabbitmqApplicationTests {
     void fanout(){
         rabbitTemplate.convertAndSend("javaboy-fanout", null, "hello fanout, i need you to handle me.");
     }
+
+    @Test
+    void topic(){
+        rabbitTemplate.convertAndSend("javaboy-topic", "xiaomi.news", "小米新闻");
+        rabbitTemplate.convertAndSend("javaboy-topic", "huawei.news", "华为新闻");
+        rabbitTemplate.convertAndSend("javaboy-topic", "phone.news", "phone新闻_after");
+        rabbitTemplate.convertAndSend("javaboy-topic", "news.phone", "phone新闻_before");
+        rabbitTemplate.convertAndSend("javaboy-topic", "news.phone.news", "phone新闻_after_before");
+        rabbitTemplate.convertAndSend("javaboy-topic", "xiaomi.phone", "小米phone");
+        rabbitTemplate.convertAndSend("javaboy-topic", "huawei.phone", "华为phone");
+        rabbitTemplate.convertAndSend("javaboy-topic", "vivo.news", "vivo新闻");
+    }
 }
